@@ -1,0 +1,179 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[margin=2cm,lmargin=4cm]{geometry}
+\usepackage{parskip, indentfirst}
+
+% Added for standalone images
+\usepackage[subpreambles=true]{standalone}
+% Added for code insertion
+\usepackage{listings}
+
+% added For Chinese Availablity
+\usepackage{luatexja-fontspec}
+\setmainjfont{FandolSong}
+
+%Arial Narrow Font for front most page
+\usepackage{fontspec}
+\newfontfamily\arialnarrow[
+    Path = ./fonts/,
+    UprightFont = ARIALN.TTF,
+    BoldFont = ARIALNB.TTF,
+    ItalicFont = ARIALNI.TTF,
+    BoldItalicFont = ARIALNBI.TTF
+]{Arial Narrow}
+
+\def\defparskip{0.5cm}
+\def\defparindent{0.5cm}
+\parskip=\defparskip
+\parindent=\defparskip
+
+\usepackage{newtxtext, newtxmath}
+
+\usepackage{hyperref}
+\usepackage{titlesec, titletoc, chngcntr}
+\titleformat{\section}[hang]{\center\bfseries\MakeUppercase}{CHAPTER \thesection: }{0pt}{}
+\titleformat*{\subsection}{\bfseries}
+\titleformat*{\subsubsection}{\bfseries}
+
+\titlecontents{figure}[0pt]{}{Figure \thecontentslabel: }{}{\titlerule*[9pt]{.}\contentspage}
+\titlecontents{table}[0pt]{}{Table \thecontentslabel: }{}{\titlerule*[9pt]{.}\contentspage}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+
+\usepackage{graphicx, setspace, multicol, multirow, tikz, fancyhdr}
+\usepackage{caption, subcaption, float, enumitem, blindtext}
+\usepackage{amsmath, physics, siunitx}
+\usepackage[]{apacite}
+
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\fontsize{10pt}{10pt}\selectfont\thepage\normalsize}
+\renewcommand{\headrulewidth}{0pt}
+
+\setlist{parsep=0pt}
+\sisetup{separate-uncertainty=true}
+% The following line maxes out the figure size at \linewidth,
+% you can always change the size you want by changing them per image
+\setkeys{Gin}{width=\linewidth,keepaspectratio}
+\captionsetup{width=0.8\linewidth, font=bf}
+\numberwithin{equation}{section}
+\usetikzlibrary{shapes,arrows.meta,positioning,calc}
+
+% This part is added to allow subfigures
+\captionsetup[subfigure]{labelformat=simple,justification=centerlast}
+
+\renewcommand\thesubfigure{(\alph{subfigure})}
+\makeatletter
+\renewcommand\p@subfigure{\thefigure~}
+\makeatother
+
+% distance between floats
+\setlength{\textfloatsep}{1cm plus 1.0pt minus 1.0pt}
+\setlength{\intextsep}{1cm plus 1.0pt minus 1.0pt}
+\setlength{\floatsep}{1cm plus 1.0pt minus 1.0pt}
+
+\gdef\date{\today}
+\gdef\title{YOUR THESIS TITLE}
+\gdef\titleMS{YOUR THESIS TITLE IN MALAY}
+\gdef\author{XXXXXXXX XXXXXX}
+\gdef\matricno{XXXXXXXXX}
+\gdef\IC{XXXXXX-XX-XXXX}
+\gdef\degreename{Degree Xx Xxxxx Xxxxxxxxxxx}
+\gdef\faculty{Xxxxxxxxxxx}
+
+\begin{document}
+\startcontents[default]
+
+\pagestyle{empty}
+\titlecontents{section}[0pt]{}{}{}{\titlerule*[9pt]{.}\contentspage}
+\input{frontmatter/frontpages.tex}
+\pagestyle{fancy}
+\pagenumbering{roman}
+\setcounter{page}{2}
+\input{frontmatter/original.tex}
+\input{frontmatter/abstract.tex}
+\input{frontmatter/acknowledgements.tex}
+
+\parskip=0pt
+\parindent=0pt
+\doublespacing
+
+\renewcommand{\contentsname}{Table of Contents}
+\phantomsection
+\section*{\contentsname}
+\addcontentsline{toc}{section}{\contentsname}
+% This allows printing up to \subsubsectionin content 
+\printcontents[default]{l}{0}{\setcounter{tocdepth}{3}}
+\clearpage
+
+\phantomsection
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+\clearpage
+
+\phantomsection
+\addcontentsline{toc}{section}{\listtablename}
+\listoftables
+\clearpage
+
+\phantomsection
+\xdef\listsymbolname{List of Symbols and Abbreviations}
+\section*{\listsymbolname}
+\addcontentsline{toc}{section}{\listsymbolname}
+\begin{tabular}{l>{:\hspace{0.5cm}}l}
+	EA & Example Abbreviation
+\end{tabular}
+\clearpage
+
+\phantomsection
+\xdef\listappendixname{List of Appendices}
+\section*{\listappendixname}
+\addcontentsline{toc}{section}{\listappendixname}
+\startcontents[appendix]
+\printcontents[appendix]{l}{0}{\setcounter{tocdepth}{2}}
+\stopcontents[appendix]
+\clearpage
+
+\parskip=1cm
+\parindent=0.5cm
+
+\doublespacing
+\parindent=0.5cm
+\parskip=0.5cm
+\pagenumbering{arabic}
+\titlecontents{section}[0pt]{\vspace*{1cm}}{\bfseries CHAPTER \thecontentslabel: \uppercase}{}{\titlerule*[9pt]{ }\contentspage}
+
+\input{content/introduction.tex}
+\input{content/problem-questions.tex}
+\input{content/objectives-relevance.tex}
+\clearpage
+\input{content/literature.tex}
+\clearpage
+\input{content/method.tex}
+\clearpage
+\input{content/results.tex}
+\clearpage
+\input{content/discussion.tex}
+\clearpage
+\input{content/conclusion.tex}
+\clearpage
+
+\titlecontents{section}[0pt]{\vspace*{1cm}}{}{}{\titlerule*[9pt]{.}\contentspage}
+
+\singlespacing
+\setlength{\bibitemsep}{\baselineskip}
+\phantomsection
+\bibliographystyle{apacite}
+\bibliography{ref.bib}
+\clearpage
+
+\stopcontents[default]
+\resumecontents[appendix]
+\appendix
+\titleformat{\section}[hang]{\center\bfseries\MakeUppercase}{APPENDIX \thesection: }{0pt}{}
+\titlecontents{section}[0pt]{}{Appendix \thecontentslabel: }{}{\titlerule*[9pt]{.}\contentspage}
+
+% Remove or comment the next line if you don't have any appendix
+\input{content/appendices.tex}
+
+\stopcontents[appendix]
+\end{document}

@@ -1,0 +1,94 @@
+\section{Literature Review}
+\subsection{Subtopics}
+
+Your literature review content goes here. This section should contain your analysis and discussion of relevant academic sources.
+
+% ==========================================
+% FIGURE EXAMPLES
+% ==========================================
+
+% Single Figure Example
+\begin{figure}[H]
+    \centering
+    % Adjust image width using the width parameter (default is full linewidth)
+    \includegraphics[width=0.2\linewidth]{assets/example.png}
+    \caption{Example figure with citation\protect\shortcite{example2002}}
+    \label{fig:example}
+\end{figure}
+
+% Reference the figure in text
+As shown in Figure~\ref{fig:example}, ...
+
+% ==========================================
+% SUBFIGURE EXAMPLES
+% ==========================================
+
+% Multiple Subfigures with Independent Sizing
+\begin{figure}[H]
+    \centering
+    % Subfigure A
+    \subcaptionbox{Sub Figure A\label{fig:subfigure_a}}{
+        \includegraphics[width=0.2\linewidth]{assets/example.png}
+    }
+    % Subfigure B
+    \subcaptionbox{Sub Figure B\label{fig:subfigure_b}}{
+        \includegraphics[width=0.4\linewidth]{assets/example.png}
+    }
+    % Subfigure C
+    \subcaptionbox{Sub Figure C\label{fig:subfigure_c}}{
+        \includegraphics[width=0.3\linewidth]{assets/example.png}
+    }
+    \caption{Comprehensive figure showing multiple related elements.}
+    \label{fig:whole_figure}
+\end{figure}
+
+% Reference subfigures in text
+Figure~\ref{fig:whole_figure} presents a comprehensive view consisting of 
+Figure~\ref{fig:subfigure_a}, Figure~\ref{fig:subfigure_b}, and Figure~\ref{fig:subfigure_c}.
+
+% ==========================================
+% TABLE EXAMPLES
+% ==========================================
+
+\begin{table}[H]
+    \centering
+    \caption{Example table with clear headers and data.}
+    \label{tab:example}
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Column A} & \textbf{Column B} \\
+        \hline
+        Data 1 & Data 2 \\
+        \hline
+        Data 3 & Data 4 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+% Reference the table in text
+The results presented in Table~\ref{tab:example} demonstrate...
+
+% ==========================================
+% TIKZ STANDALONE EXAMPLES
+% ==========================================
+
+% TikZ Flowchart/Diagram Example
+\begin{figure}[H]
+    \centering
+    % Resize to fit within specified height while maintaining aspect ratio
+    \resizebox{!}{0.3\textheight}{
+        \input{assets/tikz_images/example_flowchart.tex}
+    }
+    \caption{Example flowchart demonstrating the methodology.}
+    \label{fig:example_flowchart}
+\end{figure}
+
+% Reference the flowchart in text
+The methodology outlined in Figure~\ref{fig:example_flowchart} illustrates...
+
+% ==========================================
+% APPENDIX REFERENCES
+% ==========================================
+
+% Reference to appendix material
+Additional detailed information can be found in Appendix~\ref{app:example}.
